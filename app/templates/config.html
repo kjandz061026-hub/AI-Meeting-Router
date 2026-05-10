@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel form-panel">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">AI 配置</p>
+      <h2>添加或编辑参与者</h2>
+    </div>
+  </div>
+  <form id="ai-form" class="grid-form">
+    <input type="hidden" name="id">
+    <label>名称<input name="name" required></label>
+    <label>API 地址<input name="base_url" value="https://api.openai.com/v1" required></label>
+    <label>API Key<input name="api_key" type="password" required></label>
+    <label>模型<input name="model" value="gpt-4o-mini" required></label>
+    <label class="span-2">系统角色<textarea name="system_prompt" rows="4"></textarea></label>
+    <label>上下文窗口<input name="context_window" type="number" value="8192" min="1024"></label>
+    <label>置信度校准
+      <input name="confidence_calibration" type="number" value="0" min="-100" max="100" step="1">
+      <small>负值惩罚过度自信，正值提升保守评分。校准值会加到 AI 输出的置信度上再与阈值比较。</small>
+    </label>
+    <label class="toggle">
+      <input name="enabled" type="checkbox" checked>
+      <span>启用此 AI</span>
+    </label>
+    <label class="span-2">自我介绍<textarea name="self_intro" rows="4" placeholder="若自动生成失败，可手动填写"></textarea></label>
+    <div class="form-actions span-2">
+      <button type="submit">保存</button>
+      <button type="button" id="reset-form" class="secondary">清空</button>
+    </div>
+  </form>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">已配置 AI</p>
+      <h2>参与者列表</h2>
+      <p class="hint">拖拽卡片排序，松开后自动保存顺序。</p>
+    </div>
+    <p id="config-status" class="status"></p>
+  </div>
+  <div id="ai-list" class="ai-list"></div>
+</section>
+
+<script src="{{ url_for('static', path='/js/config.js') }}"></script>
+{% endblock %}

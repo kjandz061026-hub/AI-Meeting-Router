@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Meeting</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}">
+</head>
+<body data-page="{{ page }}">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-kicker">LOCAL MULTI-AGENT</span>
+      <h1>AI Meeting Router</h1>
+    </div>
+    <nav class="nav">
+      <a href="/discuss" class="{% if page == 'discuss' %}active{% endif %}">讨论</a>
+      <a href="/config" class="{% if page == 'config' %}active{% endif %}">配置</a>
+      <a href="/history" class="{% if page == 'history' %}active{% endif %}">历史</a>
+    </nav>
+  </header>
+  <main class="layout">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
