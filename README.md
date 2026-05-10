@@ -64,7 +64,7 @@ AI Meeting Router 是一个运行在本地的 Web 应用。你可以配置多个
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/your-username/AI-Meeting-Router.git
+git clone https://github.com/kjandz061026-hub/AI-Meeting-Router.git
 cd AI-Meeting-Router
 # 2. 安装依赖
 pip install -r requirements.txt
