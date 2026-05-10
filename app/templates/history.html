@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="history-page-shell">
+  <!-- 左侧：历史列表 -->
+  <aside class="panel history-sidebar">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">历史记录</p>
+        <h2>讨论日志</h2>
+      </div>
+    </div>
+    <div id="history-list-container" class="history-list-container">
+      <div id="history-list" class="history-card-list"></div>
+    </div>
+  </aside>
+
+  <!-- 右侧：详情 -->
+  <div class="panel history-main">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">详情</p>
+        <h2>记录查看</h2>
+      </div>
+    </div>
+    <div id="history-detail" class="history-detail-content">
+      <div class="history-empty">← 请从左侧选择一条历史记录查看详情</div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ url_for('static', path='js/history.js') }}?v=1"></script>
+{% endblock %}

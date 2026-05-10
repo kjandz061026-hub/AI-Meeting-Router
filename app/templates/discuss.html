@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="discussion-shell">
+  <aside class="panel sidebar">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">参与者</p>
+        <h2>AI 列表</h2>
+      </div>
+    </div>
+    <div class="sidebar-scroll">
+      <div id="participant-list" class="participant-list"></div>
+    </div>
+
+    <div class="compressor-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">压缩设置</p>
+          <h2>压缩器选择</h2>
+        </div>
+      </div>
+      <div id="compressor-selector" class="compressor-selector">
+        <label class="compressor-option">
+          <input type="radio" name="compressor" value="" checked>
+          <span class="compressor-label">不设置压缩器</span>
+        </label>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main-stream">
+    <section class="panel form-panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">讨论启动</p>
+          <h2>多智能体讨论台</h2>
+        </div>
+      </div>
+      <form id="discussion-form" class="grid-form">
+        <label class="span-2">问题<textarea name="question" rows="3" required placeholder="输入讨论问题"></textarea></label>
+        <label>置信度阈值
+          <input name="confidence_threshold" type="range" min="0" max="100" value="95">
+          <span id="confidence-value">95</span>
+        </label>
+        <label>最大轮数<input name="max_rounds" type="number" min="1" value="5"></label>
+        <div class="form-actions span-2">
+          <button type="submit" id="start-button">开始讨论</button>
+          <button type="button" id="stop-button" class="secondary">停止</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">实时讨论</p>
+          <h2>讨论过程</h2>
+        </div>
+        <p id="discussion-status" class="status"></p>
+      </div>
+      <div id="stream" class="stream"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">讨论结果</p>
+          <h2>最终答案</h2>
+        </div>
+      </div>
+      <div id="final-answer" class="final-answer">等待讨论开始。</div>
+    </section>
+  </div>
+</section>
+
+<script src="{{ url_for('static', path='js/discuss.js') }}?v=6"></script>
+{% endblock %}
